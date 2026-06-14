@@ -1,65 +1,71 @@
-"use server";  
+"use server";
 
-import { signIn, signOut } from "@/auth";   
-import pool from "@/libs/db"; 
-import bcrypt from "bcryptjs"; 
-import { redirect } from "next/navigation"; 
+import db from "@/libs/db";
+import bcrypt from "bcryptjs";
+import { redirect } from "next/navigation";
 
-// --- 1. FUNGSI LOGIN ---
- export async function authenticate(formData) {
+export async function authenticate(formData) {
+  const username = formData.get("username");
+  const password = formData.get("password");
+
   try {
-    await signIn("credentials", {
-      username: formData.get("username"),
-      password: formData.get("password"),
-      redirectTo: "/dashboard",
-    });
-  } catch (error) {
-    console.error("Login Error:", error);
-    return "Username atau Password salah.";               
-          return "Terjadi kesalahan sistem.";      
-      }    
-    }    
-// --- 2. FUNGSI REGISTRASI BARU ---
-export async function registerUser(formData) {
+    const [rows] = await db.query(
+      "SELECT * FROM users WHERE username = ?",
+      [username]
+    );
+
+    if (rows.length === 0) {
+      return "Username tidak ditemukan";
+    }
+
+    const user = rows[0];
+    const isValid = await bcrypt.compare(password, user.password);
+
+    if (!isValid) {
+      return "Password salah";
+    }
+
+    // ✅ redirect di luar try-catch agar tidak tertangkap sebagai error
+  } catch (err) {
+    // ✅ abaikan NEXT_REDIRECT, itu bukan error
+    if (err.message === "NEXT_REDIRECT") throw err;
+    console.error("ERROR AUTHENTICATE:", err.message);
+    return "Terjadi kesalahan server";
+  }
+
+  redirect("/"); // ✅ dipindah ke luar try-catch
+}
+
+export async function register(formData) {
   const name = formData.get("name");
   const username = formData.get("username");
   const password = formData.get("password");
 
-  // Validasi agar tidak ada kolom kosong
-  if (!name || !username || !password) {
-    return "Semua field harus diisi.";
-  }
-
   try {
-    // TEST KONEKSI DATABASE
-    const [test] = await pool.query("SELECT 1");
-    console.log("Koneksi DB:", test);
+    if (!name || !username || !password) {
+      return "Semua field harus diisi";
+    }
 
-    // Cek apakah username sudah dipakai
-    const [existingUser] = await pool.query(
+    const [existing] = await db.query(
       "SELECT id FROM users WHERE username = ?",
       [username]
     );
 
-    if (existingUser.length > 0) {
-      return "Username sudah digunakan.";
+    if (existing.length > 0) {
+      return "Username sudah dipakai";
     }
 
-    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Simpan ke database
-    await pool.query(
+    await db.query(
       "INSERT INTO users (name, username, password) VALUES (?, ?, ?)",
       [name, username, hashedPassword]
     );
-
-    console.log("User berhasil disimpan:", username);
-
-  } catch (error) {
-    console.error("Register Error:", error);
-    return "Gagal melakukan registrasi.";
+  } catch (err) {
+    if (err.message === "NEXT_REDIRECT") throw err;
+    console.error("ERROR REGISTER:", err.message);
+    return "Terjadi kesalahan server";
   }
 
-  redirect("/login?message=Registrasi Berhasil, silakan login.");
+  redirect("/login");
 }

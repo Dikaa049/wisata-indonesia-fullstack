@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import Link from "next/link"; // Navigasi antarhalaman
+import React, { useState, useRef } from "react";
+import Link from "next/link"; 
 
 export default function PengalamanPage() {
-  // 🎬 DAFTAR VIDEO PLAYLIST (Sesuai file .mp4 di folder public kamu)
   const videoPlaylist = [
     "/gunung bromo.mp4",
     "/Taman Nasional Gunung Leuser - Banda Aceh.mp4",
@@ -12,19 +11,10 @@ export default function PengalamanPage() {
     "/danau toba.mp4",
   ];
 
-  // State untuk melacak video keberapa yang sedang diputar
+  
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const videoRef = useRef(null);
 
-  // Effect untuk mendeteksi perubahan video agar otomatis memutar video berikutnya
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.load();
-      videoRef.current
-        .play()
-        .catch((err) => console.log("Autoplay dicegah oleh browser:", err));
-    }
-  }, [currentVideoIndex]);
 
   const handleVideoEnded = () => {
     setCurrentVideoIndex((prevIndex) => {
@@ -35,7 +25,7 @@ export default function PengalamanPage() {
     });
   };
 
-  // 🗺️ DATA 13 TOP DESTINATIONS (Sesuai gambar Screenshot 2026-06-07 152559_3.jpg)
+  
   const destinations = [
     {
       id: 1,
@@ -130,7 +120,7 @@ export default function PengalamanPage() {
     },
   ];
 
-  // Data tiruan untuk Testimoni / Shared Experiences
+ 
   const reviews = [
     {
       id: 1,

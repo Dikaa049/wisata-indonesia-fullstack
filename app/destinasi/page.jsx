@@ -57,7 +57,7 @@ export default function DetailLabuanBajo() {
         </Link>
       </header>
 
-      {/* === FOTO UTAMA (HERO BANNER) === */}
+      
       <section className="w-full h-[60vh] relative">
         {/* 📌 [ZONA GAMBAR UTAMA 1] 
             Ganti isi src="..." di bawah ini jika ingin mengubah gambar background utama Labuan Bajo */}
@@ -100,12 +100,7 @@ export default function DetailLabuanBajo() {
               yang tak tertandingi.
             </p>
 
-            {/* 📌 [ZONA GAMBAR TAMBAHAN (OPSIONAL)]
-                Jika kamu mau menyelipkan gambar dokumentasi tambahan di tengah-tengah teks paragraf, 
-                kamu bisa menghapus tanda ulasan kode di bawah ini:
-                
-                <img src="/pulau komodo.webp" alt="Dokumentasi Komodo" className="w-full h-64 object-cover rounded-xl my-4" />
-            */}
+           
 
             <p>
               Dari sini, Anda bisa memulai pelayaran memukau mengelilingi
@@ -213,7 +208,7 @@ export default function DetailLabuanBajo() {
                 ></textarea>
               </div>
 
-              {/* TOMBOL KIRIM */}
+             
               <button
                 type="submit"
                 className="w-full bg-[#0f2e3c] text-white font-bold py-3 rounded-lg hover:bg-teal-700 transition shadow-md"

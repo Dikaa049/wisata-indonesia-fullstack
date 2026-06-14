@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { registerUser } from "@/libs/auth/action";
+import { register } from "@/libs/auth/action";
 import { useFormStatus } from "react-dom";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function SignUpPage() {
   const [error, setError] = useState("");
 
   const clientAction = async (formData) => {
-    const result = await registerUser(formData);
+    const result = await register(formData); // ✅ registerUser → register
 
     if (result) {
       setError(result);
@@ -74,11 +75,13 @@ export default function SignUpPage() {
       </div>
 
       <div className="hidden md:block w-1/2 relative">
-        <img
+        <Image
           src="/borobudur.webp"
           alt="Borobudur"
-          className="absolute inset-0 w-full h-full object-cover"
+          fill
+          className="object-cover"
         />
+        {/* ✅ <img> → <Image> dari next/image */}
       </div>
     </div>
   );
