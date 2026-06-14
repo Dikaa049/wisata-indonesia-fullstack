@@ -140,9 +140,9 @@ export default function BerandaWisata() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
-            { img: "/ubud.webp", tag: "Luxury", tagColor: "text-gray-400 bg-gray-200", judul: "Celestial Ubud Retreat", desc: "Experience the zenith of spiritual luxury in the heart of Bali's emerald highlands." },
-            { img: "/pulau komodo.webp", tag: "Adventure", tagColor: "text-pink-500 bg-pink-100", judul: "Pink Beach Odyssey", desc: "A private catamaran voyage through the primordial beauty of Komodo National Park." },
-            { img: "/candi borobudur.webp", tag: "Cultural", tagColor: "text-amber-600 bg-amber-100", judul: "Heritage of Borobudur", desc: "Walk the paths of ancient kings and find peace among the thousand stupas." },
+            { img: "/ubud.webp", tag: "Luxury", tagColor: "text-gray-400 bg-gray-200", judul: "Ubud Luxury Retreat", desc: "Nikmati ketenangan Ubud dengan vila eksklusif, spa tradisional Bali, dan pemandangan sawah terasering yang menenangkan jiwa." },
+            { img: "/pulau komodo.webp", tag: "Adventure", tagColor: "text-pink-500 bg-pink-100", judul: "Komodo Island Adventure", desc: "Jelajahi Pulau Komodo, trekking ke puncak Padar, dan nikmati keindahan laut Flores dalam petualangan yang tak terlupakan." },
+            { img: "/candi borobudur.webp", tag: "Cultural", tagColor: "text-amber-600 bg-amber-100", judul: "Heritage of Borobudur", desc: "Temukan kisah peradaban kuno melalui kemegahan Candi Borobudur, mahakarya budaya Indonesia yang mendunia." },
           ].map((item, i) => (
             <div key={i} className="group cursor-pointer">
               <div className="w-full h-56 md:h-64 overflow-hidden rounded-xl mb-5 shadow-sm">

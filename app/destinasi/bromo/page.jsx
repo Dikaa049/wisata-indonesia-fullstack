@@ -7,9 +7,10 @@ import { usePathname } from "next/navigation";
 export default function DetailBromoUltimate() {
   const pathname = usePathname();
   const [deskripsi, setDeskripsi] = useState("");
-  
+
   // Deskripsi Epic untuk Bromo
-  const teksPenuh = "Saksikan kemegahan fajar yang membelah kabut di jantung Kaldera Tengger. Di sini, di mana pasir berbisik ditiup angin pegunungan, berdiri kokoh sang legenda purba, Gunung Bromo. Jelajahi hamparan lautan pasir yang mistis, daki tangga menuju kawah aktif yang menderu, dan biarkan dirimu terpaku oleh pesona matahari terbit paling ikonik di dunia. Bromo bukan sekadar gunung berapi; ia adalah altar alam semesta di mana keajaiban fajar bertemu dengan ketenangan batin yang tak terlupakan.";
+  const teksPenuh =
+    "Saksikan kemegahan fajar yang membelah kabut di jantung Kaldera Tengger. Di sini, di mana pasir berbisik ditiup angin pegunungan, berdiri kokoh sang legenda purba, Gunung Bromo. Jelajahi hamparan lautan pasir yang mistis, daki tangga menuju kawah aktif yang menderu, dan biarkan dirimu terpaku oleh pesona matahari terbit paling ikonik di dunia. Bromo bukan sekadar gunung berapi; ia adalah altar alam semesta di mana keajaiban fajar bertemu dengan ketenangan batin yang tak terlupakan.";
 
   useEffect(() => {
     let index = 0;
@@ -34,7 +35,9 @@ export default function DetailBromoUltimate() {
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{__html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap');
         
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -48,15 +51,19 @@ export default function DetailBromoUltimate() {
         
         .cursor-blink { animation: blink 1s step-end infinite; }
         .font-epic { font-family: 'Cinzel', serif; }
-      `}} />
+      `,
+        }}
+      />
 
       {/* Fix: key={pathname} agar animasi reset saat pindah page */}
-      <main key={pathname} className="relative w-full h-screen overflow-hidden bg-black font-sans text-white antialiased">
-        
+      <main
+        key={pathname}
+        className="relative w-full h-screen overflow-hidden bg-black font-sans text-white antialiased"
+      >
         {/* Layer 1: BACKGROUND VIDEO (.mp4) */}
         <div className="absolute inset-0 anim-fade z-0">
           <video
-            src="/gunung bromo.mp4" 
+            src="/gunung bromo.mp4"
             autoPlay
             loop
             muted
@@ -70,14 +77,13 @@ export default function DetailBromoUltimate() {
 
         {/* Layer 2: UI Content */}
         <div className="relative z-10 flex flex-col h-full container mx-auto px-6 md:px-10">
-          
           {/* HEADER DENGAN LOGO */}
           <header className="flex justify-between items-center py-8 anim-up-1">
             <div className="flex items-center gap-4">
-              <img 
-                src="/logo.png" 
+              <img
+                src="/logo.png"
                 alt="Logo"
-                className="w-12 h-12 md:w-16 md:h-16 object-contain drop-shadow-xl" 
+                className="w-12 h-12 md:w-16 md:h-16 object-contain drop-shadow-xl"
               />
               <span className="text-sm md:text-base font-bold tracking-[0.3em] uppercase text-white/90 drop-shadow-md font-epic">
                 Wisata Indonesia
@@ -99,7 +105,6 @@ export default function DetailBromoUltimate() {
 
           {/* MAIN KONTEN */}
           <div className="flex-1 flex flex-col justify-center items-center text-center px-4 w-full max-w-5xl mx-auto">
-            
             {/* Lokasi */}
             <div className="inline-flex items-center gap-2 mb-6 anim-up-1">
               <span className="text-rose-500 text-sm"></span>
@@ -141,9 +146,8 @@ export default function DetailBromoUltimate() {
                 ))}
               </div>
             </div>
-
           </div>
-          
+
           <div className="h-12 md:h-20"></div>
         </div>
       </main>

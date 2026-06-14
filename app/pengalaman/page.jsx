@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import Link from "next/link"; 
+import Link from "next/link";
 
 export default function PengalamanPage() {
   const videoPlaylist = [
@@ -11,10 +11,8 @@ export default function PengalamanPage() {
     "/danau toba.mp4",
   ];
 
-  
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const videoRef = useRef(null);
-
 
   const handleVideoEnded = () => {
     setCurrentVideoIndex((prevIndex) => {
@@ -25,7 +23,6 @@ export default function PengalamanPage() {
     });
   };
 
-  
   const destinations = [
     {
       id: 1,
@@ -120,53 +117,100 @@ export default function PengalamanPage() {
     },
   ];
 
- 
-  const reviews = [
+  const informations = [
     {
       id: 1,
-      name: "Isabella Chen",
-      country: "Singapore",
-      rating: 5,
-      text: '"The services and information provided made navigating my visit to the traditional villages seamless and filled with beautiful custom insights..."',
+      name: "Berita Terbaru Indonesia",
+      img: "/raja ampat.webp",
+      link: "https://www.indonesia.travel/id/id/travel-ideas/",
     },
     {
       id: 2,
-      name: "Marcus Thorne",
-      country: "United Kingdom",
-      rating: 5,
-      text: '"An absolute masterpiece of travel coordination. High-quality services and an extremely professional team behind this platform..."',
+      name: "Informasi Umum",
+      img: "/foto orang liat map.jpg",
+      link: "https://www.indonesia.travel/id/id/general-information/",
     },
     {
       id: 3,
-      name: "David Kim",
-      country: "South Korea",
+      name: "Buku & Brosur Elektronik",
+      img: "/buku dan brouser.jpg",
+      link: "https://www.indonesia.travel/id/id/inspiration/",
+    },
+    {
+      id: 4,
+      name: "Peraturan Bali",
+      img: "/budaya bali.jpg",
+      link: "https://www.indonesia.travel/id/id/travel-ideas/adventure/bali-vacation-in-mind-get-informed-of-the-latest-regulations/",
+    },
+    {
+      id: 5,
+      name: "Panduan Brand",
+      img: "/panduan brand.jpg",
+      link: "https://www.indonesia.travel/id/id/brand-guidelines/",
+    },
+    {
+      id: 6,
+      name: "Kesempatan Kemitraan",
+      img: "/gunung bomo.webp",
+      link: "https://www.indonesia.travel/id/id/partnership-opportunity/",
+    },
+    {
+      id: 7,
+      name: "Informasi Terkini",
+      img: "/kepulauan derawan.webp",
+      link: "https://www.indonesia.travel/id/id/crisis-management/",
+    },
+  ];
+
+  const reviews = [
+    {
+      id: 1,
+      name: "Siti Nur Aisyah",
+      origin: "Surabaya",
+      flag: "🇮🇩",
+      role: "Wisatawan Domestik",
       rating: 5,
-      text: '"The culture and connectivity insights helped me explore the local destinations with absolute confidence and joy..."',
+      text: '"Memenangkan kompetisi keindahan alam madani Indonesia! Situs ini memberikan panduan wisata yang sangat detail, mempermudah liburan keluarga kami saat menjelajahi wilayah Nusantara."',
+    },
+    {
+      id: 2,
+      name: "John Smith",
+      origin: "London",
+      flag: "🇬🇧",
+      role: "International Traveler",
+      rating: 5,
+      text: '"I love the rich cultural insights and standardized navigation links. It makes booking local custom guides and understanding regulations completely stress-free!"',
+    },
+    {
+      id: 3,
+      name: "Jean Dupont",
+      origin: "Paris",
+      flag: "🇫🇷",
+      role: "International Traveler",
+      rating: 5,
+      text: '"There is an instant trust built when using this platform. Seamless connection to the official destination resources and incredible transparency of information."',
     },
   ];
 
   return (
     <div className="bg-[#fcfbf7] min-h-screen text-[#0f2a3a] font-sans relative">
-      {/* ==================== BANNER NAVBAR UTAMA (PERUBAHAN DI SINI) ==================== */}
+      {/* ==================== BANNER NAVBAR UTAMA ==================== */}
       <header className="absolute top-0 w-full px-6 py-8 flex flex-col md:flex-row justify-between items-center z-20 text-white bg-transparent">
         <Link href="/" className="flex items-center gap-3 cursor-pointer">
-          {}
           <img
-            src="/logo.png" // <-- Sesuaikan jika nama file di folder public kamu berbeda (misal: /logo.png)
+            src="/logo.png"
             alt="Logo Wisata Indonesia"
             className="w-12 h-12 object-contain drop-shadow-lg"
             onError={(e) => {
-              // Jika file logo tidak ditemukan, otomatis memunculkan emoji burung cadangan agar tidak pecah kosong
-              e.target.style.display = "none";
-              if (e.target.nextSibling)
-                e.target.nextSibling.style.display = "block";
+              e.currentTarget.style.display = "none";
+              if (e.currentTarget.nextSibling) {
+                e.currentTarget.nextSibling.style.display = "block";
+              }
             }}
           />
-          {/* Emoji burung cadangan */}
           <span className="text-4xl drop-shadow-lg hidden">🕊️</span>
 
           <div className="leading-tight drop-shadow-md">
-            {/* Mengganti teks menjadi Wisata Indonesia */}
             <h1 className="text-xl font-serif font-bold tracking-wide">
               wisata
             </h1>
@@ -219,144 +263,229 @@ export default function PengalamanPage() {
         </div>
       </section>
 
-      {/* ==================== 2. ESSENTIAL INSIGHTS ==================== */}
-      <section className="max-w-6xl mx-auto py-16 px-6">
-        <p className="text-xs tracking-widest text-gray-400 uppercase font-semibold mb-1">
-          INFORMASI PERJALANAN
-        </p>
-        <h2 className="text-3xl font-serif mb-8">Wawasan Penting</h2>
+      {/* ==================== KONTEN UTAMA (LAYOUT DUA KOLOM SINKRON) ==================== */}
+      <main className="max-w-7xl mx-auto py-16 px-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
+        {/* ==================== KOLOM KIRI: TOP DESTINATIONS ==================== */}
+        <section className="lg:col-span-7">
+          <div className="mb-8">
+            <h2 className="text-3xl md:text-4xl font-serif text-[#0f2a3a] mb-1">
+              Top Destinations
+            </h2>
+            <p className="text-sm text-gray-400">
+              Explore our highly-rated spots across the islands.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-            <div className="h-64 bg-amber-100 relative">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {destinations.map((item) => (
               <div
-                className="w-full h-full bg-cover bg-center"
-                style={{ backgroundImage: "url('/borobudur.webp')" }}
-              ></div>
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-serif mb-2">
-                The Art of Adat (Local Customs)
-              </h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-4">
-                Navigating Indonesia requires more than a map; it requires an
-                understanding of 'Adat'. From the sacred silence of Nyepi to the
-                communal 'Gotong Royong' spirit, learn how to respect local
-                traditions...
-              </p>
-              <div className="flex gap-2">
-                <span className="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full">
-                  Etiquette
-                </span>
-                <span className="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full">
-                  Culture
-                </span>
-              </div>
-            </div>
-          </div>
+                key={item.id}
+                className="bg-white p-3 rounded-2xl border border-gray-100 shadow-sm flex flex-col"
+              >
+                <div className="aspect-square w-full overflow-hidden rounded-xl bg-gray-100 relative">
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src =
+                        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=500";
+                    }}
+                  />
+                </div>
 
-          <div className="flex flex-col gap-6">
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex-1">
-              <span className="text-2xl mb-2 block">🌡️</span>
-              <h4 className="font-serif text-lg mb-2">Panduan Iklim</h4>
-              <p className="text-gray-500 text-xs leading-relaxed">
-                Merencanakan perjalanan di tengah musim hujan? Musim kemarau
-                kami (Mei - September) sangat cocok...
-              </p>
-            </div>
-            <div className="bg-[#0b3546] text-white p-6 rounded-xl shadow-sm flex-1">
-              <span className="text-2xl mb-2 block">💵</span>
-              <h4 className="font-serif text-lg mb-2">
-                Mata Uang & Konektivitas
-              </h4>
-              <p className="text-gray-300 text-xs leading-relaxed">
-                Informasi penukaran rupiah, ketersediaan jaringan 5G di kota
-                besar seperti Jakarta dan Bali, serta kemudahan sistem QRIS...
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+                <div className="pt-4 pb-2 px-1 flex flex-col flex-grow">
+                  <div className="flex justify-between items-center gap-2 mb-1">
+                    <h3 className="text-[15px] font-medium text-gray-900 leading-snug">
+                      {item.name}
+                    </h3>
+                    <div className="flex items-center gap-0.5 text-gray-500 text-[11px] shrink-0">
+                      <span className="text-amber-400 text-xs">⭐</span>
+                      <span className="font-medium">{item.rating}</span>
+                    </div>
+                  </div>
 
-      {/* ==================== 3. TOP DESTINATIONS SECTION ==================== */}
-      <section className="max-w-6xl mx-auto py-12 px-6">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-serif text-[#0f2a3a] mb-2">
-            Top Destinations
-          </h2>
-          <p className="text-sm text-gray-400">
-            Explore our highly-rated spots across the islands.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {destinations.map((item) => (
-            <div
-              key={item.id}
-              className="bg-white p-3 rounded-2xl border border-gray-100 shadow-sm flex flex-col"
-            >
-              <div className="aspect-square w-full overflow-hidden rounded-xl bg-gray-100 relative">
-                <img
-                  src={item.img}
-                  alt={item.name}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.target.src =
-                      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=500";
-                  }}
-                />
-              </div>
-
-              <div className="pt-4 pb-2 px-1 flex flex-col flex-grow">
-                <div className="flex justify-between items-center gap-2 mb-1">
-                  <h3 className="text-[15px] font-medium text-gray-900 leading-snug">
-                    {item.name}
-                  </h3>
-                  <div className="flex items-center gap-0.5 text-gray-500 text-[11px] shrink-0">
-                    <span className="text-amber-400 text-xs">⭐</span>
-                    <span className="font-medium">{item.rating}</span>
+                  <div className="flex items-center gap-1 text-[11px] text-gray-400 mt-1">
+                    <span>📍</span>
+                    <span className="truncate">{item.location}</span>
                   </div>
                 </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
-                <div className="flex items-center gap-1 text-[11px] text-gray-400 mt-1">
-                  <span>📍</span>
-                  <span className="truncate">{item.location}</span>
+        {/* ==================== KOLOM KANAN: ESSENTIAL INSIGHTS & INFORMASI ==================== */}
+        <div className="lg:col-span-5 flex flex-col gap-12">
+          {/* SUB-SEKSYEN: WAWASAN PENTING */}
+          <section>
+            <p className="text-xs tracking-widest text-gray-400 uppercase font-semibold mb-1">
+              INFORMASI PERJALANAN
+            </p>
+            <h2 className="text-3xl font-serif mb-6">Wawasan Penting</h2>
+
+            <div className="flex flex-col gap-6">
+              <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                <div className="h-48 bg-amber-100 relative">
+                  <div
+                    className="w-full h-full bg-cover bg-center"
+                    style={{ backgroundImage: "url('/candi borobudur.webp')" }}
+                  ></div>
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-serif mb-2">The Art of Adat</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed mb-4">
+                    Indonesia memiliki ratusan suku dan tradisi yang beragam.
+                    Wisatawan dianjurkan menghormati adat setempat, berpakaian
+                    sopan saat mengunjungi tempat ibadah, serta menjaga etika
+                    saat berinteraksi dengan masyarakat. Memahami budaya lokal
+                    akan membuat perjalanan lebih berkesan.
+                  </p>
+                  <div className="flex gap-2">
+                    <span className="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full">
+                      Etiquette
+                    </span>
+                    <span className="text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full">
+                      Culture
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
+                  <span className="text-2xl mb-2 block">🌡️</span>
+                  <h4 className="font-serif text-base mb-1">Panduan Iklim</h4>
+                  <p className="text-gray-500 text-[11px] leading-relaxed">
+                    Indonesia memiliki iklim tropis dengan dua musim utama,
+                    yaitu musim kemarau (Mei–September) dan musim hujan
+                    (Oktober–April). Musim kemarau cocok untuk wisata alam dan
+                    pantai, sedangkan musim hujan menawarkan pemandangan hijau
+                    yang lebih segar dan suasana yang lebih tenang.
+                  </p>
+                </div>
+
+                <div className="bg-[#0b3546] text-white p-5 rounded-xl shadow-sm">
+                  <span className="text-2xl mb-2 block">💵</span>
+                  <h4 className="font-serif text-base mb-1">
+                    Mata Uang & Konektivitas
+                  </h4>
+                  <p className="text-gray-300 text-[11px] leading-relaxed">
+                    Mata uang resmi Indonesia adalah Rupiah (IDR). Pembayaran
+                    non-tunai melalui QRIS, kartu debit, dan dompet digital
+                    tersedia di sebagian besar kota besar serta destinasi wisata
+                    populer. Jaringan 4G dan 5G juga tersedia di banyak wilayah
+                    perkotaan, meskipun beberapa daerah terpencil masih memiliki
+                    keterbatasan sinyal.
+                  </p>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </section>
 
-      {/* ==================== 4. SHARED EXPERIENCES ==================== */}
-      <section className="bg-[#f5f3e9] py-16 px-6 mt-12">
-        <div className="max-w-6xl mx-auto">
-          <p className="text-xs tracking-widest text-center text-gray-400 uppercase font-semibold mb-1">
-            Traveler Voices
-          </p>
-          <h2 className="text-3xl font-serif text-center mb-12">
-            Shared Experiences
-          </h2>
+          {/* SUB-SEKSYEN: INFORMASI GRID */}
+          <section>
+            <div className="flex justify-between items-center mb-6 border-b pb-3">
+              <h2 className="text-2xl font-serif">Informasi</h2>
+              <button className="text-gray-500 hover:text-gray-700 text-lg">
+                ✕
+              </button>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              {informations.map((item) => (
+                <a
+                  key={item.id}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative aspect-[4/3] rounded-xl overflow-hidden group shadow-md cursor-pointer block"
+                >
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    onError={(e) => {
+                      e.currentTarget.src =
+                        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=500";
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors"></div>
+                  <div className="absolute bottom-3 left-3 right-3 z-10 text-white flex items-center justify-between gap-1">
+                    <h3 className="text-xs md:text-sm font-medium leading-tight shadow-sm">
+                      {item.name}
+                    </h3>
+                    <span className="text-xs text-gray-300 group-hover:text-white shrink-0">
+                      ↗
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        </div>
+      </main>
+
+      {/* ==================== 4. TANGGAPAN WISATAWAN (BACKGROUND FOTO DERAWAN) ==================== */}
+      <section
+        className="py-16 px-6 bg-cover bg-center bg-no-repeat relative"
+        style={{ backgroundImage: "url('/kepulauan derawan.webp')" }}
+      >
+        {/* Layer Gelap (Overlay) agar teks & card komentar lebih terbaca kontras */}
+        <div className="absolute inset-0 bg-black/40 z-0"></div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-serif text-white mb-2 drop-shadow-md">
+              Tanggapan Wisatawan (Traveler Reviews)
+            </h2>
+            <p className="text-sm text-gray-200 drop-shadow-sm">
+              Ulasan dari Dalam dan Luar Negeri
+            </p>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {reviews.map((rev) => (
               <div
                 key={rev.id}
-                className="bg-white p-6 rounded-xl shadow-sm border border-gray-100"
+                className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-white/20 flex flex-col justify-between"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-gray-300 rounded-full"></div>{" "}
-                  <div>
-                    <h4 className="text-sm font-bold">{rev.name}</h4>
-                    <p className="text-[11px] text-gray-400">{rev.country}</p>
+                <div>
+                  {/* Header Profil Komentar */}
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-gradient-to-tr from-emerald-500 to-teal-700 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-inner">
+                        {rev.name.charAt(0)}
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-gray-900 flex items-center gap-1.5">
+                          {rev.name} ({rev.origin})
+                          <span className="text-xs">{rev.flag}</span>
+                        </h4>
+                        <p className="text-[11px] text-gray-400 font-medium">
+                          {rev.role}
+                        </p>
+                      </div>
+                    </div>
                   </div>
+
+                  {/* Rating Bintang */}
+                  <div className="flex text-amber-400 text-xs mb-3">
+                    {"★".repeat(rev.rating)}
+                  </div>
+
+                  {/* Isi Teks Komentar */}
+                  <p className="text-gray-600 text-xs italic leading-relaxed mb-6">
+                    {rev.text}
+                  </p>
                 </div>
-                <div className="flex text-amber-400 text-xs mb-3">
-                  {"★".repeat(rev.rating)}
+
+                {/* Badge Penanda API */}
+                <div className="pt-2 border-t border-gray-100 flex items-center">
+                  <span className="text-[10px] font-semibold bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-md tracking-wider">
+                    WisataReview API
+                  </span>
                 </div>
-                <p className="text-gray-600 text-xs italic leading-relaxed">
-                  {rev.text}
-                </p>
               </div>
             ))}
           </div>
