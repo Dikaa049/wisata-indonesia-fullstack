@@ -2,22 +2,18 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-// 1. IMPORT USEPATHNAME UNTUK DETEKSI RUTE
 import { usePathname } from "next/navigation";
 
 export default function DetailRajaAmpatUltimateFix() {
-  const pathname = usePathname(); // Melacak URL saat ini
+  const pathname = usePathname();
   const [deskripsi, setDeskripsi] = useState("");
   
-  // Menggunakan teks Epic Adventure (Opsi 1)
   const teksPenuh = "Di ujung ufuk timur Nusantara, tersembunyi sebuah mahakarya alam yang tak lekang oleh waktu. Selamat datang di Raja Ampat, jantung dari Segitiga Terumbu Karang Dunia. Di sini, gugusan pulau karst menjulang megah bak benteng pelindung kuno, menjaga rahasia keanekaragaman hayati laut tertinggi di planet ini. Selami perairannya yang sebening kristal di Misool, temukan jalanmu di balik labirin karang Kepulauan Wayag, dan saksikan langsung kepakan sayap surgawi Burung Cendrawasih. Ini bukan sekadar destinasi liburan, melainkan awal dari sebuah petualangan epik yang akan terukir abadi dalam ingatanmu.";
 
-  // 2. ENGINE TYPEWRITER YANG LEBIH STABIL
   useEffect(() => {
     let index = 0;
     let interval;
     
-    // Set teks kosong di awal render client
     setDeskripsi("");
 
     const startDelay = setTimeout(() => {
@@ -27,15 +23,14 @@ export default function DetailRajaAmpatUltimateFix() {
         if (index > teksPenuh.length) {
           clearInterval(interval);
         }
-      }, 30); // Kecepatan ketikan
+      }, 30);
     }, 1500);
 
-    // CLEANUP: Sangat penting agar interval tidak bocor saat user pindah page cepat-cepat!
     return () => {
       clearTimeout(startDelay);
       if (interval) clearInterval(interval);
     };
-  }, [pathname]); // Akan ter-reset otomatis setiap kali pathname (rute) berubah
+  }, [pathname]);
 
   return (
     <>
@@ -55,10 +50,8 @@ export default function DetailRajaAmpatUltimateFix() {
         .font-epic { font-family: 'Cinzel', serif; }
       `}} />
 
-      {/* 3. TRIK PAMUNGKAS: Tambahkan key={pathname} di tag <main> */}
-      <main key={pathname} className="relative w-full h-screen overflow-hidden bg-black font-sans text-white antialiased">
+      <main className="relative w-full bg-black font-sans text-white antialiased">
         
-        {/* Layer 1: Background & Overlay */}
         <div className="absolute inset-0 anim-fade z-0">
           <video
      src="/raja ampat.mp4" 
@@ -72,12 +65,10 @@ export default function DetailRajaAmpatUltimateFix() {
           <div className="absolute inset-0 bg-black/40" />
         </div>
 
-        {/* Layer 2: Main Layout */}
         <div className="relative z-10 flex flex-col h-full container mx-auto px-6 md:px-10">
           
           <header className="flex justify-between items-center py-8 anim-up-1">
   
-  {/* BAGIAN LOGO & TEKS (KIRI) */}
   <div className="flex items-center gap-4">
     <img 
       src="/logo.png"  
@@ -89,7 +80,6 @@ export default function DetailRajaAmpatUltimateFix() {
     </span>
   </div>
 
-  {/* TOMBOL KEMBALI (KANAN) */}
   <Link
     href="/"
     className="group flex items-center gap-2 text-xs md:text-sm font-bold tracking-widest uppercase border-b border-transparent hover:border-white transition-all duration-500"
@@ -104,10 +94,8 @@ export default function DetailRajaAmpatUltimateFix() {
 
 </header>
 
-          {/* KONTEN UTAMA */}
           <div className="flex-1 flex flex-col justify-center items-center text-center px-4 w-full max-w-5xl mx-auto">
             
-            {/* Lokasi */}
             <div className="inline-flex items-center gap-2 mb-6 anim-up-1">
               <span className="text-rose-500 text-sm">𖡡</span>
               <span className="text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
@@ -115,12 +103,10 @@ export default function DetailRajaAmpatUltimateFix() {
               </span>
             </div>
 
-            {/* Judul: Font Epic (Cinzel) */}
             <h1 className="font-epic text-7xl sm:text-8xl md:text-[8rem] font-black leading-none uppercase tracking-wide mb-10 drop-shadow-2xl anim-up-2 text-white">
               RAJA AMPAT
             </h1>
 
-            {/* DESKRIPSI: Animasi Typewriter */}
             <div className="w-full max-w-4xl mx-auto min-h-[140px] mb-12">
               <p className="text-white/90 text-base md:text-lg leading-relaxed font-light text-center drop-shadow-lg">
                 {deskripsi}
@@ -128,7 +114,6 @@ export default function DetailRajaAmpatUltimateFix() {
               </p>
             </div>
 
-            {/* Grid Info Statistik */}
             <div className="w-full max-w-4xl mx-auto anim-up-3">
               <div className="w-24 h-[1px] bg-white/30 mx-auto mb-8" />
               <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 text-center">

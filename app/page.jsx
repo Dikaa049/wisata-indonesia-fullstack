@@ -36,7 +36,6 @@ export default function BerandaWisata() {
     <main className="w-full font-sans bg-[#f9fafb]">
       <section className="relative h-screen w-full overflow-hidden bg-gray-900">
 
-        {/* Video berganti sesuai index */}
         {destinasiHero.map((item, i) => (
           <div
             key={i}
@@ -56,7 +55,6 @@ export default function BerandaWisata() {
           </div>
         ))}
 
-        {/* NAVBAR */}
         <header className="absolute top-0 w-full px-6 py-8 flex flex-col md:flex-row justify-between items-center z-20 text-white">
           <div className="flex items-center gap-3 cursor-pointer">
             <img
@@ -85,7 +83,6 @@ export default function BerandaWisata() {
           </nav>
         </header>
 
-        {/* Teks Hero */}
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center pointer-events-none mt-20">
           <h2 className="text-5xl md:text-7xl font-extrabold text-white drop-shadow-2xl mb-4 tracking-wider transition-all duration-700">
             {destinasiHero[index].nama}
@@ -95,7 +92,6 @@ export default function BerandaWisata() {
           </p>
         </div>
 
-        {/* Tombol navigasi */}
         <div className="absolute bottom-10 w-full z-20 px-10 flex justify-between items-center">
           <button
             onClick={geserKiri}
@@ -104,7 +100,6 @@ export default function BerandaWisata() {
             ❮
           </button>
 
-          {/* Dot indicator */}
           <div className="flex gap-2">
             {destinasiHero.map((_, i) => (
               <button
@@ -126,7 +121,6 @@ export default function BerandaWisata() {
         </div>
       </section>
 
-      {/* SECTION 2 - CURATED FOR YOU */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-20 bg-[#f9fafb]">
         <div className="flex flex-col md:flex-row justify-between items-end mb-10 border-b pb-4">
           <div>
@@ -156,7 +150,6 @@ export default function BerandaWisata() {
         </div>
       </section>
 
-   {/* SECTION 3 - NUSANTARA HORIZON */}
 <section className="py-20 bg-white">
   <div className="max-w-7xl mx-auto px-6 md:px-12">
     <div className="text-center mb-12">
@@ -164,9 +157,7 @@ export default function BerandaWisata() {
       <p className="text-gray-500 text-sm mt-3">Sebuah perjalanan visual melalui pemandangan-pemandangan paling menakjubkan di kepulauan ini.</p>
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-[500px]"> {/* ✅ tinggi fixed */}
-      
-      {/* Kiri - Gambar Besar */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-[500px]">
       <Link href="/destinasi/bromo" className="relative rounded-2xl overflow-hidden group cursor-pointer shadow-md h-full block">
         <img src="/gunung bomo.webp" className="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Mount Bromo"
           onError={(e) => { e.target.src = "/danau toba.webp"; }} />
@@ -177,7 +168,6 @@ export default function BerandaWisata() {
         </div>
       </Link>
 
-      {/* Kanan - 4 Gambar Kecil */}
       <div className="grid grid-cols-2 grid-rows-2 gap-4 h-full">
         {[
           { nama: "Ubud, Bali", img: "/ubud.webp", href: "/destinasi/ubud" },
@@ -199,7 +189,6 @@ export default function BerandaWisata() {
   </div>
 </section>
 
-      {/* SECTION 4 - TOP DESTINATIONS */}
       <section className="py-20 bg-[#f9fafb]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-2">Top Destinations</h2>
@@ -227,7 +216,6 @@ export default function BerandaWisata() {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="bg-[#0f2e3c] text-white py-16 px-6 md:px-12">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-1">

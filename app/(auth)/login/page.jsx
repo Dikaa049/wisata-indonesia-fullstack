@@ -18,7 +18,6 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen bg-white">
 
-      {/* Kiri - Form */}
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-10">
         <div className="w-full max-w-sm">
 
@@ -33,7 +32,6 @@ export default function LoginPage() {
 
           <form action={clientAction} className="flex flex-col gap-3">
 
-            {/* Username */}
             <div className="relative">
               <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -47,7 +45,6 @@ export default function LoginPage() {
               />
             </div>
 
-            {/* Password */}
             <div className="relative">
               <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -79,14 +76,12 @@ export default function LoginPage() {
             <SubmitButton text="Masuk" />
           </form>
 
-          {/* Divider */}
           <div className="flex items-center gap-3 my-5">
             <div className="flex-1 h-px bg-gray-200" />
             <span className="text-xs text-gray-400">atau lanjutkan dengan</span>
             <div className="flex-1 h-px bg-gray-200" />
           </div>
 
-          {/* Social Login */}
           <div className="flex flex-col gap-3">
             <button className="flex items-center gap-3 w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm hover:bg-gray-50 transition">
               <GoogleIcon />
@@ -114,7 +109,6 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Kanan - Gambar */}
       <div className="hidden md:block w-1/2 relative">
         <Image
           src="/borobudur.webp"

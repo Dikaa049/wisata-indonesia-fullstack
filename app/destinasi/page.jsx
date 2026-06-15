@@ -4,11 +4,9 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function DetailLabuanBajo() {
-  // 1. State untuk Fitur Rating Bintang
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
 
-  // 2. State untuk Fitur Komentar
   const [daftarKomentar, setDaftarKomentar] = useState([
     {
       id: 1,
@@ -20,10 +18,9 @@ export default function DetailLabuanBajo() {
   ]);
   const [inputKomentar, setInputKomentar] = useState("");
 
-  // Fungsi untuk mengirim komentar baru
   const kirimKomentar = (e) => {
-    e.preventDefault(); // 🛠️ BUGFIXED: Ditambahkan 'e.' agar form tidak error saat disubmit
-    if (!inputKomentar.trim()) return; // Jangan kirim jika kosong
+    e.preventDefault();
+    if (!inputKomentar.trim()) return;
     if (rating === 0) {
       alert("Mohon berikan rating bintang terlebih dahulu!");
       return;
@@ -31,20 +28,18 @@ export default function DetailLabuanBajo() {
 
     const komentarBaru = {
       id: Date.now(),
-      nama: "Pengunjung (Anda)", // Simulasi nama user
+      nama: "Pengunjung (Anda)",
       teks: inputKomentar,
       bintang: rating,
       waktu: "Baru saja",
     };
 
-    // Tambahkan komentar baru ke daftar
     setDaftarKomentar([komentarBaru, ...daftarKomentar]);
-    setInputKomentar(""); // Kosongkan form input
+    setInputKomentar("");
   };
 
   return (
     <main className="w-full min-h-screen bg-white font-sans text-gray-800">
-      {/* === NAVBAR SINGKAT === */}
       <header className="w-full px-6 py-4 flex justify-between items-center bg-[#0f2e3c] text-white">
         <Link href="/" className="font-serif text-xl tracking-wider font-bold">
           wonderful indonesia
@@ -59,14 +54,11 @@ export default function DetailLabuanBajo() {
 
       
       <section className="w-full h-[60vh] relative">
-        {/* 📌 [ZONA GAMBAR UTAMA 1] 
-            Ganti isi src="..." di bawah ini jika ingin mengubah gambar background utama Labuan Bajo */}
         <img
           src="/labuan bajjo.webp"
           alt="Labuan Bajo"
           className="w-full h-full object-cover"
           onError={(e) => {
-            // Jalur alternatif jika ada salah ketik nama file tanpa double 'j'
             e.target.src = "/labuan bajo.webp";
           }}
         />
@@ -84,9 +76,7 @@ export default function DetailLabuanBajo() {
         </div>
       </section>
 
-      {/* === KONTEN UTAMA: DESKRIPSI & ULASAN === */}
       <section className="max-w-6xl mx-auto px-6 md:px-12 py-16 grid grid-cols-1 lg:grid-cols-3 gap-16">
-        {/* KOLOM KIRI: DESKRIPSI (Lebar 2/3) */}
         <div className="lg:col-span-2">
           <h2 className="text-3xl font-serif font-bold mb-6 text-gray-900">
             Tentang Destinasi Ini
@@ -119,7 +109,6 @@ export default function DetailLabuanBajo() {
 
           <hr className="my-12 border-gray-200" />
 
-          {/* BAGIAN KOMENTAR */}
           <h3 className="text-2xl font-bold font-serif mb-8">
             Komentar & Ulasan ({daftarKomentar.length})
           </h3>
@@ -137,7 +126,6 @@ export default function DetailLabuanBajo() {
                       {komentar.waktu}
                     </p>
                   </div>
-                  {/* Bintang dari komentar */}
                   <div className="flex text-yellow-400 text-sm">
                     {[...Array(5)].map((_, i) => (
                       <span key={i}>{i < komentar.bintang ? "★" : "☆"}</span>
@@ -152,7 +140,6 @@ export default function DetailLabuanBajo() {
           </div>
         </div>
 
-        {/* KOLOM KANAN: FITUR BERI RATING (Lebar 1/3) */}
         <div className="lg:col-span-1">
           <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 sticky top-10">
             <h3 className="text-xl font-bold font-serif mb-2 text-gray-900">
@@ -164,7 +151,6 @@ export default function DetailLabuanBajo() {
             </p>
 
             <form onSubmit={kirimKomentar} className="flex flex-col gap-5">
-              {/* FITUR RATING INTERAKTIF */}
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2">
                   Penilaian Anda
@@ -194,7 +180,6 @@ export default function DetailLabuanBajo() {
                 </p>
               </div>
 
-              {/* KOLOM TULIS KOMENTAR */}
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2">
                   Tulis Komentar
@@ -208,7 +193,6 @@ export default function DetailLabuanBajo() {
                 ></textarea>
               </div>
 
-             
               <button
                 type="submit"
                 className="w-full bg-[#0f2e3c] text-white font-bold py-3 rounded-lg hover:bg-teal-700 transition shadow-md"

@@ -8,7 +8,6 @@ export default function DetailDanauTobaUltimate() {
   const pathname = usePathname();
   const [deskripsi, setDeskripsi] = useState("");
   
-  // Deskripsi Epic untuk Danau Toba
   const teksPenuh = "Berdirilah di tepi keajaiban vulkanik terbesar yang pernah mengukir wajah bumi. Danau Toba bukan sekadar perairan; ia adalah samudera di atas awan, sisa dari letusan epik yang mengubah sejarah peradaban. Jelajahi Pulau Samosir yang bersemayam megah di tengah birunya kaldera, resapi hembusan angin pinus yang dingin menyayat, dan selami kedalaman mitologi Batak kuno yang terus hidup dalam setiap pahatan rumah adatnya. Di sini, kemegahan alam dan keabadian legenda melebur menjadi satu pengalaman spiritual yang tak terukur.";
 
   useEffect(() => {
@@ -50,9 +49,8 @@ export default function DetailDanauTobaUltimate() {
         .font-epic { font-family: 'Cinzel', serif; }
       `}} />
 
-      <main key={pathname} className="relative w-full h-screen overflow-hidden bg-black font-sans text-white antialiased">
+      <main className="relative w-full bg-black font-sans text-white antialiased">
         
-        {/* Layer 1: BACKGROUND VIDEO (.mp4) */}
         <div className="absolute inset-0 anim-fade z-0">
           <video
             src="/danau toba.mp4" 
@@ -62,15 +60,12 @@ export default function DetailDanauTobaUltimate() {
             playsInline
             className="w-full h-full object-cover opacity-90"
           />
-          {/* Overlay Gradient: Warna biru sapphire gelap untuk mencerminkan danau yang dalam dan dingin */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/90" />
           <div className="absolute inset-0 bg-blue-900/10" />
         </div>
 
-        {/* Layer 2: UI Content */}
         <div className="relative z-10 flex flex-col h-full container mx-auto px-6 md:px-10">
           
-          {/* HEADER DENGAN LOGO */}
           <header className="flex justify-between items-center py-8 anim-up-1">
             <div className="flex items-center gap-4">
               <img 
@@ -96,10 +91,8 @@ export default function DetailDanauTobaUltimate() {
             </Link>
           </header>
 
-          {/* MAIN KONTEN */}
           <div className="flex-1 flex flex-col justify-center items-center text-center px-4 w-full max-w-5xl mx-auto">
             
-            {/* Lokasi */}
             <div className="inline-flex items-center gap-2 mb-6 anim-up-1">
               <span className="text-blue-400 text-sm"></span>
               <span className="text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
@@ -107,12 +100,11 @@ export default function DetailDanauTobaUltimate() {
               </span>
             </div>
 
-            {/* Judul: DANAU TOBA */}
+
             <h1 className="font-epic text-6xl sm:text-7xl md:text-[8rem] lg:text-[9rem] font-black leading-none uppercase tracking-[0.1em] mb-10 drop-shadow-2xl anim-up-2 text-white">
               DANAU TOBA
             </h1>
 
-            {/* Typewriter Deskripsi */}
             <div className="w-full max-w-4xl mx-auto min-h-[140px] mb-12">
               <p className="text-white/90 text-base md:text-lg leading-relaxed font-light text-center drop-shadow-lg">
                 {deskripsi}
@@ -120,7 +112,7 @@ export default function DetailDanauTobaUltimate() {
               </p>
             </div>
 
-            {/* Statistik Info */}
+
             <div className="w-full max-w-4xl mx-auto anim-up-3">
               <div className="w-24 h-[1px] bg-blue-500/30 mx-auto mb-8" />
               <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 text-center">

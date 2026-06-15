@@ -8,7 +8,6 @@ export default function DetailBromoUltimate() {
   const pathname = usePathname();
   const [deskripsi, setDeskripsi] = useState("");
 
-  // Deskripsi Epic untuk Bromo
   const teksPenuh =
     "Saksikan kemegahan fajar yang membelah kabut di jantung Kaldera Tengger. Di sini, di mana pasir berbisik ditiup angin pegunungan, berdiri kokoh sang legenda purba, Gunung Bromo. Jelajahi hamparan lautan pasir yang mistis, daki tangga menuju kawah aktif yang menderu, dan biarkan dirimu terpaku oleh pesona matahari terbit paling ikonik di dunia. Bromo bukan sekadar gunung berapi; ia adalah altar alam semesta di mana keajaiban fajar bertemu dengan ketenangan batin yang tak terlupakan.";
 
@@ -55,12 +54,10 @@ export default function DetailBromoUltimate() {
         }}
       />
 
-      {/* Fix: key={pathname} agar animasi reset saat pindah page */}
       <main
         key={pathname}
-        className="relative w-full h-screen overflow-hidden bg-black font-sans text-white antialiased"
+        className="relative w-full bg-black font-sans text-white antialiased"
       >
-        {/* Layer 1: BACKGROUND VIDEO (.mp4) */}
         <div className="absolute inset-0 anim-fade z-0">
           <video
             src="/gunung bromo.mp4"
@@ -70,14 +67,11 @@ export default function DetailBromoUltimate() {
             playsInline
             className="w-full h-full object-cover"
           />
-          {/* Overlay Gradient: Warna agak warm/orange sedikit di bawah agar estetik fajar dapet */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90" />
           <div className="absolute inset-0 bg-black/30" />
         </div>
 
-        {/* Layer 2: UI Content */}
         <div className="relative z-10 flex flex-col h-full container mx-auto px-6 md:px-10">
-          {/* HEADER DENGAN LOGO */}
           <header className="flex justify-between items-center py-8 anim-up-1">
             <div className="flex items-center gap-4">
               <img
@@ -103,9 +97,7 @@ export default function DetailBromoUltimate() {
             </Link>
           </header>
 
-          {/* MAIN KONTEN */}
           <div className="flex-1 flex flex-col justify-center items-center text-center px-4 w-full max-w-5xl mx-auto">
-            {/* Lokasi */}
             <div className="inline-flex items-center gap-2 mb-6 anim-up-1">
               <span className="text-rose-500 text-sm"></span>
               <span className="text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
@@ -113,12 +105,11 @@ export default function DetailBromoUltimate() {
               </span>
             </div>
 
-            {/* Judul: BROMO */}
+
             <h1 className="font-epic text-7xl sm:text-8xl md:text-[9rem] font-black leading-none uppercase tracking-widest mb-10 drop-shadow-2xl anim-up-2 text-white">
               BROMO
             </h1>
 
-            {/* Typewriter Deskripsi */}
             <div className="w-full max-w-4xl mx-auto min-h-[140px] mb-12">
               <p className="text-white/90 text-base md:text-lg leading-relaxed font-light text-center drop-shadow-lg">
                 {deskripsi}
@@ -126,7 +117,7 @@ export default function DetailBromoUltimate() {
               </p>
             </div>
 
-            {/* Statistik Info */}
+
             <div className="w-full max-w-4xl mx-auto anim-up-3">
               <div className="w-24 h-[1px] bg-white/30 mx-auto mb-8" />
               <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 text-center">

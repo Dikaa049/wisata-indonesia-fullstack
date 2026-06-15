@@ -25,15 +25,13 @@ export async function authenticate(formData) {
       return "Password salah";
     }
 
-    // ✅ redirect di luar try-catch agar tidak tertangkap sebagai error
   } catch (err) {
-    // ✅ abaikan NEXT_REDIRECT, itu bukan error
     if (err.message === "NEXT_REDIRECT") throw err;
     console.error("ERROR AUTHENTICATE:", err.message);
     return "Terjadi kesalahan server";
   }
 
-  redirect("/"); // ✅ dipindah ke luar try-catch
+ redirect("/");
 }
 
 export async function register(formData) {

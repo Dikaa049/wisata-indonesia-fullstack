@@ -8,7 +8,7 @@ export default function DetailUbudUltimate() {
   const pathname = usePathname();
   const [deskripsi, setDeskripsi] = useState("");
   
-  // Deskripsi Epic untuk Ubud
+
   const teksPenuh = "Temukan kedamaian di jantung zamrud Pulau Dewata, di mana waktu seolah melambat di antara hamparan terasering hijau yang melegenda. Ubud adalah pelukan hangat bagi jiwa yang mencari ketenangan, perpaduan sempurna antara spiritualitas kuno dan napas kesenian yang tak pernah mati. Jelajahi labirin hutan kera yang sakral, hirup aroma dupa yang menenangkan di pelataran pura, dan biarkan dirimu larut dalam simfoni alam di sela-sela gemericik air suci. Di sini, setiap jengkal tanah adalah kanvas, dan setiap hembusan angin adalah doa bagi mereka yang merindukan pulang ke alam.";
 
   useEffect(() => {
@@ -50,9 +50,8 @@ export default function DetailUbudUltimate() {
         .font-epic { font-family: 'Cinzel', serif; }
       `}} />
 
-      <main key={pathname} className="relative w-full h-screen overflow-hidden bg-black font-sans text-white antialiased">
+      <main className="relative w-full bg-black font-sans text-white antialiased">
         
-        {/* Layer 1: BACKGROUND VIDEO (.mp4) */}
         <div className="absolute inset-0 anim-fade z-0">
           <video
             src="/ubud.mp4" 
@@ -62,15 +61,12 @@ export default function DetailUbudUltimate() {
             playsInline
             className="w-full h-full object-cover opacity-80"
           />
-          {/* Overlay Gradient: Hijau tua gelap agar nuansa hutan Ubud terasa */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90" />
           <div className="absolute inset-0 bg-emerald-900/10" />
         </div>
 
-        {/* Layer 2: UI Content */}
         <div className="relative z-10 flex flex-col h-full container mx-auto px-6 md:px-10">
           
-          {/* HEADER DENGAN LOGO */}
           <header className="flex justify-between items-center py-8 anim-up-1">
             <div className="flex items-center gap-4">
               <img 
@@ -96,10 +92,8 @@ export default function DetailUbudUltimate() {
             </Link>
           </header>
 
-          {/* MAIN KONTEN */}
           <div className="flex-1 flex flex-col justify-center items-center text-center px-4 w-full max-w-5xl mx-auto">
             
-            {/* Lokasi */}
             <div className="inline-flex items-center gap-2 mb-6 anim-up-1">
               <span className="text-emerald-500 text-sm"></span>
               <span className="text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
@@ -107,12 +101,11 @@ export default function DetailUbudUltimate() {
               </span>
             </div>
 
-            {/* Judul: UBUD */}
+
             <h1 className="font-epic text-7xl sm:text-8xl md:text-[9rem] font-black leading-none uppercase tracking-[0.2em] mb-10 drop-shadow-2xl anim-up-2 text-white">
               UBUD
             </h1>
 
-            {/* Typewriter Deskripsi */}
             <div className="w-full max-w-4xl mx-auto min-h-[140px] mb-12">
               <p className="text-white/90 text-base md:text-lg leading-relaxed font-light text-center drop-shadow-lg">
                 {deskripsi}
@@ -120,7 +113,7 @@ export default function DetailUbudUltimate() {
               </p>
             </div>
 
-            {/* Statistik Info */}
+
             <div className="w-full max-w-4xl mx-auto anim-up-3">
               <div className="w-24 h-[1px] bg-emerald-500/30 mx-auto mb-8" />
               <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 text-center">

@@ -10,7 +10,7 @@ export default function SignUpPage() {
   const [error, setError] = useState("");
 
   const clientAction = async (formData) => {
-    const result = await register(formData); // ✅ registerUser → register
+    const result = await register(formData);
 
     if (result) {
       setError(result);
@@ -81,7 +81,6 @@ export default function SignUpPage() {
           fill
           className="object-cover"
         />
-        {/* ✅ <img> → <Image> dari next/image */}
       </div>
     </div>
   );
